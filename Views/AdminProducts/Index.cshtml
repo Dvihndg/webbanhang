@@ -1,0 +1,23 @@
+@model IEnumerable<Product>
+<h2>Quản lý sản phẩm</h2>
+<a asp-action="Create">+ Thêm sản phẩm</a>
+<table>
+<thead><tr><th>Tên</th><th>Loại</th><th>Giá</th><th>Thao tác</th></tr></thead>
+<tbody>
+@foreach (var p in Model)
+{
+    <tr>
+        <td>@p.Name</td>
+        <td>@p.Category?.Name</td>
+        <td>@p.Price</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@p.Id">Sửa</a>
+            <form asp-action="Delete" method="post" style="display:inline">
+                <input type="hidden" name="id" value="@p.Id" />
+                <button type="submit">Xóa</button>
+            </form>
+        </td>
+    </tr>
+}
+</tbody>
+</table>

@@ -1,0 +1,14 @@
+@model Product
+<h2>Thêm sản phẩm</h2>
+<form method="post">
+    <label>Tên</label>
+    <input asp-for="Name" />
+    <label>Mô tả</label>
+    <input asp-for="Description" />
+    <label>Giá</label>
+    <input asp-for="Price" />
+    <label>Loại</label>
+    <select asp-for="CategoryId" asp-items="ViewBag.Categories"></select>
+    <button type="submit">Lưu</button>
+</form>
+<div asp-validation-summary="All"></div>

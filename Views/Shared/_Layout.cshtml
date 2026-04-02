@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web bán hàng MVC</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header>
+    <nav>
+        <a asp-controller="Home" asp-action="Index">Trang chủ</a> |
+        <a asp-controller="Products" asp-action="Index">Sản phẩm</a> |
+        <a asp-controller="Cart" asp-action="Index">Giỏ hàng</a> |
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">
+                <button type="submit">Đăng xuất</button>
+            </form>
+            @if (User.IsInRole("Admin"))
+            {
+                <text> | <a asp-controller="AdminProducts" asp-action="Index">QL Sản phẩm</a>
+                | <a asp-controller="AdminCategories" asp-action="Index">QL Loại SP</a></text>
+            }
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Register">Đăng ký</a>
+            <a asp-controller="Account" asp-action="Login">Đăng nhập</a>
+        }
+    </nav>
+</header>
+<main class="container">
+    @RenderBody()
+</main>
+</body>
+</html>

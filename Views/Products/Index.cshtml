@@ -1,0 +1,24 @@
+@model IEnumerable<Product>
+<h2>Danh sách sản phẩm</h2>
+<table>
+    <thead><tr><th>Tên</th><th>Loại</th><th>Giá</th><th></th></tr></thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.Category?.Name</td>
+            <td>@p.Price.ToString("N0") VNĐ</td>
+            <td>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <form asp-controller="Cart" asp-action="Add" method="post">
+                        <input type="hidden" name="productId" value="@p.Id" />
+                        <button type="submit">Thêm giỏ hàng</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
