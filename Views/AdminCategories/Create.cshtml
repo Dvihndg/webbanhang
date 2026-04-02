@@ -1,0 +1,8 @@
+@model Category
+<h2>Thêm loại sản phẩm</h2>
+<form method="post">
+    <label>Tên loại</label>
+    <input asp-for="Name" />
+    <button type="submit">Lưu</button>
+</form>
+<div asp-validation-summary="All"></div>

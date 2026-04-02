@@ -1,0 +1,14 @@
+@model LoginViewModel
+<h2>Đăng nhập</h2>
+<form method="post">
+    <label>Email</label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+
+    <label>Mật khẩu</label>
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+
+    <button type="submit">Đăng nhập</button>
+</form>
+<div asp-validation-summary="All"></div>
